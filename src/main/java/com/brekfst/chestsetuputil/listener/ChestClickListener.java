@@ -54,6 +54,11 @@ public class ChestClickListener implements Listener {
                 config.addChestLocation(chestLocation);
 
                 //somewhere here you can add the check to see if the exact same chest location already exists
+                // in fact ykw i'll do it
+                if (config.getChestLocations().contains(chestLocation)) {
+                    player.sendMessage(ChatColourUtil.formatPrefix("&cThis chest is already inside the config!"));
+                    return;
+                }
 
                 player.sendMessage(ChatColourUtil.formatPrefix("&aChest location added!"));
             }
