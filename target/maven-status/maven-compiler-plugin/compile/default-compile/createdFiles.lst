@@ -1,0 +1,12 @@
+com\brekfst\chestsetuputil\commands\ChestUtilsCommand.class
+com\brekfst\chestsetuputil\manager\PlayerSessionManager.class
+com\brekfst\chestsetuputil\util\ExportUtil.class
+com\brekfst\chestsetuputil\util\ChatColourUtil.class
+com\brekfst\chestsetuputil\listener\ExportGUIListener.class
+com\brekfst\chestsetuputil\model\GameConfig.class
+com\brekfst\chestsetuputil\model\ChestLocation.class
+com\brekfst\chestsetuputil\ChestSetupUtil.class
+com\brekfst\chestsetuputil\util\ConfigurationSerializableAdapter.class
+com\brekfst\chestsetuputil\listener\ChestClickListener.class
+com\brekfst\chestsetuputil\listener\MenuHandler.class
+com\brekfst\chestsetuputil\util\ConfigurationSerializableAdapter$1.class

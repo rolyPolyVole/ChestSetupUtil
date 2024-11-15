@@ -1,0 +1,7 @@
+name: ChestSetupUtil
+version: '1.0'
+main: com.brekfst.chestsetuputil.ChestSetupUtil
+api-version: '1.21'
+author: brekfst
+commands:
+  chestutils:
