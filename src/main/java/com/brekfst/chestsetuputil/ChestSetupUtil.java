@@ -1,5 +1,7 @@
 package com.brekfst.chestsetuputil;
 
+// Note: The ".idea" and "target" folders should not be included in version control. - Enderman
+
 import com.brekfst.chestsetuputil.commands.ChestUtilsCommand;
 import com.brekfst.chestsetuputil.listener.ChestClickListener;
 import com.brekfst.chestsetuputil.listener.ExportGUIListener;
@@ -8,6 +10,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.bukkit.plugin.java.JavaPlugin;
 
+// Good and clean-looking main class, well done. - Enderman
 public class ChestSetupUtil extends JavaPlugin {
     private PlayerSessionManager sessionManager;
     private Gson gson;

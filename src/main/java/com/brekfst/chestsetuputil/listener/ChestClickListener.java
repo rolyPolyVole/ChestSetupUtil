@@ -32,6 +32,7 @@ public class ChestClickListener implements Listener {
             // getItemInMainHand() never nulls
             // uh at this point maybe isValidItem() is needed
 
+            // Checking the persistent data here is enough and I doubt there's much of a performance difference. - Enderman
             if (item != null && item.getType() == Material.WOODEN_HOE &&
                     item.getItemMeta() != null &&
                     item.getItemMeta().getPersistentDataContainer().has(new NamespacedKey(plugin, "chest_setup_tool"), PersistentDataType.BYTE)) {

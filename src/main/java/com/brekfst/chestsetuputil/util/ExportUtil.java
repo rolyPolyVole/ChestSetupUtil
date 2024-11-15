@@ -16,9 +16,14 @@ import java.util.List;
 import java.util.UUID;
 import java.util.logging.Level;
 
+// I would use the GSON library for working with JSON objects. - Enderman
+
 public class ExportUtil {
 
     // not sure why this is a static util, can probably fit in PlayerSessionManager or another manager
+
+    // Agreed. You should use dependency injection for any class and method that requires the plugin class, or more
+    // generally any method that requires the main class of your program. - Enderman
     public static void performExport(ChestSetupUtil plugin, Player player) {
         UUID playerUUID = player.getUniqueId();
         GameConfig config = plugin.getSessionManager().getGameConfig(playerUUID);
