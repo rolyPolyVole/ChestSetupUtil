@@ -16,7 +16,7 @@ import org.bukkit.persistence.PersistentDataType;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MenuHandler implements InventoryHolder {
+public class MenuHandler implements InventoryHolder { // smart, implementing InventoryHolder
     private final Inventory menu;
     private final ChestSetupUtil plugin;
     private final List<ChestLocation> chestLocations;
@@ -38,14 +38,14 @@ public class MenuHandler implements InventoryHolder {
         initializeMenu();
     }
 
-    private void initializeMenu() {
+    private void initializeMenu() { // nice
         ItemStack glassPane = createGlassPane();
         setBorderSlots(glassPane);
         addExportButton();
         populateChestItems();
     }
 
-    private int getMaxItemsPerPage() {
+    private int getMaxItemsPerPage() { // if you're using static constants might aswell make this one static too
         return 28; // 4 rows of 7 items
     }
 
@@ -60,6 +60,9 @@ public class MenuHandler implements InventoryHolder {
             menu.setItem(i, glassPane); // Left column
             menu.setItem(i + 8, glassPane); // Right column
         }
+
+        // that's good, here's another way you could do it if your gui was smaller
+        // for (int i : new int[]{0, 69, 420}) {...}
     }
 
     private ItemStack createGlassPane() {
@@ -93,6 +96,16 @@ public class MenuHandler implements InventoryHolder {
                 }
             }
         }
+
+        // what the heck
+        // even defining all the slots as a static field is more readable AND more efficient
+        // because you don't perform 28 iterations with an operation to a list every time
+        // private static final int[] INNER_SLOTS = new int[]{
+        //     10, 11, 12, 13, 14, 15, 16,
+        //     19, 20, 21, 22, 23, 24, 25,
+        //     28, 29, 30, 31, 32, 33, 34,
+        //     37, 38, 39, 40, 41, 42, 43
+        // }
 
         int itemsPerPage = innerSlots.size();
         int startIndex = page * itemsPerPage;
@@ -138,6 +151,17 @@ public class MenuHandler implements InventoryHolder {
     private ItemStack createChestItem(ChestLocation location) {
         ItemStack chestItem = new ItemStack(Material.CHEST);
         ItemMeta chestMeta = chestItem.getItemMeta();
+
+        //i'd make x y and z variables
+        // double x = location.getX();
+        // double y = location.getY();
+        // double z = location.getZ();
+
+        // in my projects, I usually have a class that just has every single NamespacedKey I use as a static constant
+        // public final class Keys {
+        //     public static final NamespacedKey CHEST_LOCATION = new NamespacedKey("chest_setup_util", "chest_location");
+        // }
+
         if (chestMeta != null) {
             chestMeta.setDisplayName(ChatColourUtil.formatMessage(
                     "&eLocation: &7" + location.getX() + ", " + location.getY() + ", " + location.getZ()));
@@ -148,6 +172,7 @@ public class MenuHandler implements InventoryHolder {
                     new NamespacedKey(plugin, "chest_location"), PersistentDataType.STRING, locationKey);
             chestItem.setItemMeta(chestMeta);
         }
+
         return chestItem;
     }
 

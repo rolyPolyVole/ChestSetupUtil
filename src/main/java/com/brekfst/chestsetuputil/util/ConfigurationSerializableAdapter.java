@@ -9,6 +9,9 @@ import java.lang.reflect.Type;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+// ?
+// if you're adding deserializing from a config to continue working on it, then this is great
+// but rn what is this doing
 public class ConfigurationSerializableAdapter implements JsonSerializer<ConfigurationSerializable>, JsonDeserializer<ConfigurationSerializable> {
     final Type objectStringMapType = new TypeToken<Map<String, Object>>() {}.getType();
 

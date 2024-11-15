@@ -29,6 +29,9 @@ public class ChestClickListener implements Listener {
             Player player = event.getPlayer();
             ItemStack item = player.getInventory().getItemInMainHand();
 
+            // getItemInMainHand() never nulls
+            // uh at this point maybe isValidItem() is needed
+
             if (item != null && item.getType() == Material.WOODEN_HOE &&
                     item.getItemMeta() != null &&
                     item.getItemMeta().getPersistentDataContainer().has(new NamespacedKey(plugin, "chest_setup_tool"), PersistentDataType.BYTE)) {
@@ -41,6 +44,7 @@ public class ChestClickListener implements Listener {
                     return;
                 }
 
+                //for consistency, i'd use Block block = event.getClickedBlock(), and get the world name off the block
                 ChestLocation chestLocation = new ChestLocation(
                         player.getWorld().getName(),
                         event.getClickedBlock().getX(),
@@ -48,6 +52,9 @@ public class ChestClickListener implements Listener {
                         event.getClickedBlock().getZ()
                 );
                 config.addChestLocation(chestLocation);
+
+                //somewhere here you can add the check to see if the exact same chest location already exists
+
                 player.sendMessage(ChatColourUtil.formatPrefix("&aChest location added!"));
             }
         }

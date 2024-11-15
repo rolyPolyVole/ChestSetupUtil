@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public class PlayerSessionManager {
+public class PlayerSessionManager { // all good
     private final Map<UUID, GameConfig> activeConfigs = new HashMap<>();
 
     public void startSession(UUID playerUUID) {

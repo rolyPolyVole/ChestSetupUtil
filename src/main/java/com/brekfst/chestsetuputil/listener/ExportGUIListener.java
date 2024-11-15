@@ -37,8 +37,11 @@ public class ExportGUIListener implements Listener {
         if (clickedItem == null || clickedItem.getType() == Material.AIR) return;
 
         ItemMeta meta = clickedItem.getItemMeta();
-
         if (meta == null) return;
+
+        //switch statement!!
+        //i would make an individual method for each case
+        //removeChest(), export(), flipPage()
 
         if (clickedItem.getType() == Material.CHEST) {
             String locationKey = meta.getPersistentDataContainer().get(
@@ -52,6 +55,9 @@ public class ExportGUIListener implements Listener {
                     int z = Integer.parseInt(parts[3]);
 
                     ChestLocation locationToRemove = new ChestLocation(worldName, x, y, z);
+                    //maybe you can add a ChestLocation.of(), cuz creating a new instance just for comparision can be kinda confusing
+                    //also just looks cleaner imo
+
                     List<ChestLocation> chestLocations = plugin.getSessionManager().getGameConfig(player.getUniqueId()).getChestLocations();
 
                     if (chestLocations.remove(locationToRemove)) {
@@ -61,9 +67,11 @@ public class ExportGUIListener implements Listener {
                     }
 
                     // Refresh the GUI
-                    int currentPage = menuHandler.page;
+                    int currentPage = menuHandler.page; // getter is more OOP principled
                     new MenuHandler(plugin, chestLocations, currentPage).openInventory(player);
                 }
+
+                //maybe error here, parts not being 4 means something went HORRIBLY wrong
             }
         } else if (clickedItem.getType() == Material.LIME_STAINED_GLASS_PANE) {
             // Export and close the inventory

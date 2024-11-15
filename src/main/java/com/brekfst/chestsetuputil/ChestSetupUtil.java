@@ -13,7 +13,7 @@ public class ChestSetupUtil extends JavaPlugin {
     private Gson gson;
 
     @Override
-    public void onEnable() {
+    public void onEnable() { // nice
         sessionManager = new PlayerSessionManager();
         gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
 

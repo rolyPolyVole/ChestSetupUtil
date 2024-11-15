@@ -19,6 +19,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
 
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -31,12 +32,15 @@ public class ChestUtilsCommand implements CommandExecutor, TabCompleter {
     }
 
     @Override
+    @ParametersAreNonnullByDefault
+    // personally I just hate intelliJ warnings, so I use stuff like @SuppressWarnings and other annotations
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!(sender instanceof Player)) {
+        if (!(sender instanceof Player)) { // pattern variable
             sender.sendMessage("Only players can run this command.");
             return true;
         }
 
+        // you can use a pattern variable here
         Player player = (Player) sender;
 
         // Check for permission
@@ -50,6 +54,7 @@ public class ChestUtilsCommand implements CommandExecutor, TabCompleter {
             return true;
         }
 
+        //could be replaced with enhanced switch but that's more personal preference
         switch (args[0].toLowerCase()) {
             case "tool":
                 giveChestTool(player);
@@ -59,6 +64,11 @@ public class ChestUtilsCommand implements CommandExecutor, TabCompleter {
                 break;
             case "export":
                 if (args.length > 1 && args[1].equalsIgnoreCase("confirm")) {
+                    // here's a trick
+                    // variable.equals("yourString") will throw NPE if variable is null
+                    // "yourString".equalsIgnoreCase(variable) will not throw NPE
+                    // not really applicable here since args is a string array but it's good to know
+
                     performExport(player);
                 } else {
                     openExportGui(player);
@@ -82,6 +92,7 @@ public class ChestUtilsCommand implements CommandExecutor, TabCompleter {
                 ChatColor.LIGHT_PURPLE + "configuration."
         ));
 
+        //meta.setEnchantmentGlintOverride(true); alternative
         meta.addEnchant(Enchantment.UNBREAKING, 1, true);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_ATTRIBUTES);
 
@@ -118,6 +129,7 @@ public class ChestUtilsCommand implements CommandExecutor, TabCompleter {
     }
 
     @Override
+    @ParametersAreNonnullByDefault
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
         if (args.length == 1) {
             return Arrays.asList("tool", "start", "export");

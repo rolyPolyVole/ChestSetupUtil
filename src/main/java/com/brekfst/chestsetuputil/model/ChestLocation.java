@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+// could be a record but again that's just personal preference
 public class ChestLocation implements ConfigurationSerializable {
     private final String worldName;
     private final int x, y, z;
