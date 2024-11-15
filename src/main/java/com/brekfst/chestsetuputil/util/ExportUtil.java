@@ -16,6 +16,8 @@ import java.util.List;
 import java.util.UUID;
 import java.util.logging.Level;
 
+// I would use the GSON library for working with JSON objects. - Enderman
+
 public class ExportUtil {
 
     // not sure why this is a static util, can probably fit in PlayerSessionManager or another manager

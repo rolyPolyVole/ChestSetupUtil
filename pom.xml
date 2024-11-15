@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.brekfst</groupId>
-  <artifactId>ChestSetupUtil</artifactId>
+  <artifactId>ChestSetupUtil</artifactId> <!-- Artifact IDs are usually kebab-case (so it would be "chest-setup-util" in this case). - Enderman -->
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
