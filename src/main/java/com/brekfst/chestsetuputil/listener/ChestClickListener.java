@@ -52,7 +52,6 @@ public class ChestClickListener implements Listener {
                         event.getClickedBlock().getY(),
                         event.getClickedBlock().getZ()
                 );
-                config.addChestLocation(chestLocation);
 
                 //somewhere here you can add the check to see if the exact same chest location already exists
                 // in fact ykw i'll do it
@@ -61,6 +60,7 @@ public class ChestClickListener implements Listener {
                     return;
                 }
 
+                config.addChestLocation(chestLocation);
                 player.sendMessage(ChatColourUtil.formatPrefix("&aChest location added!"));
             }
         }
