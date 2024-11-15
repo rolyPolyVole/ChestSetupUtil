@@ -10,6 +10,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.bukkit.plugin.java.JavaPlugin;
 
+// Good and clean-looking main class, well done. - Enderman
 public class ChestSetupUtil extends JavaPlugin {
     private PlayerSessionManager sessionManager;
     private Gson gson;
